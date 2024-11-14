@@ -25,7 +25,7 @@ steps:
       sonar.projectName= azure-dev-maven-basic
 - task: Maven@3
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: 'sonar-scanner-maven/maven-basic/pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
