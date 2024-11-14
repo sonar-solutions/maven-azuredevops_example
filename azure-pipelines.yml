@@ -22,7 +22,8 @@ steps:
       # sonar.exclusions=**/*.bin
       sonar.verbose=true
       sonar.projectKey=azure-dev-maven-basic
-      sonar.projectName= azure-dev-maven-basic
+      sonar.projectName=azure-dev-maven-basic
+      
 - task: Maven@3
   inputs:
     mavenPomFile: 'sonar-scanner-maven/maven-basic/pom.xml'
