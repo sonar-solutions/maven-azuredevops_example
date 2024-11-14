@@ -27,6 +27,7 @@ steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'sonar-scanner-maven/maven-basic/pom.xml'
+    options: '-X'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
