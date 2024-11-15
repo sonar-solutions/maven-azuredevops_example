@@ -14,7 +14,7 @@ pool:
 steps:
 - task: SonarQubePrepare@7
   inputs:
-    SonarQube: 'SonarQube Server-maven-example'
+    SonarQube: 'SonarQube Cloud Staging-maven-example'
     scannerMode: 'other'
     extraProperties: |
       # Additional properties that will be passed to the scanner, 
