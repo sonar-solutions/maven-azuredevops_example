@@ -22,7 +22,7 @@ steps:
       # sonar.exclusions=**/*.bin
       sonar.verbose=true
       sonar.projectKey=onboarding-examples_maven-example
-      sonar.projectName=azure-dev-maven-basic
+      sonar.projectName=onboarding-examples_maven-example
       sonar.organization=onboarding-examples
       
 - task: Maven@3
