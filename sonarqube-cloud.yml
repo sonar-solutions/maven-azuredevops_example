@@ -1,0 +1,51 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- task: SonarCloudPrepare@3
+  inputs:
+    SonarQube: 'SonarQube Cloud Production-maven-example'
+    organization: 'azure-devops-onboarding-examples'
+    scannerMode: 'other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.verbose=true
+            sonar.projectKey= onboarding-examples_maven-example
+            sonar.projectName=onboarding-examples_maven-example
+
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'sonar-scanner-maven/maven-basic/pom.xml'
+    options: '-X'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    mavenVersionOption: 'Default'
+    mavenOptions: '-Xmx3072m'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: true
+    sqMavenPluginVersionChoice: 'latest'
+
+- task: SonarCloudPublish@3
+  inputs:
+    pollingTimeoutSec: '300'
