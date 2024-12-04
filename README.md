@@ -1,47 +1,39 @@
-# Sonar Scanning Examples
+## Overview
 
-This repository showcases basic examples of usage and code coverage for SonarScanners.
-* [SonarScanner for Gradle](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner-for-gradle)
-* [SonarScanner for .NET](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner-for-dotnet)
-* [SonarScanner for Maven](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner-for-maven)
-* [SonarScanner for Ant](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner-for-ant) - This scanner is now deprecated. See link for more details.
-* [SonarScanner CLI](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner)
+This project is an example of using Azure DevOps for a java/maven project. It demonstrates how to set up a CI/CD pipeline for a java/maven application.  
+We have multiple CI/CD Pipeline examples, one for running the SonarScanner and sending the results to SonarQube Server and the other for sending the results to SonarQube Cloud.  
 
-Sonar's [Clean Code solution](https://www.sonarsource.com/solutions/clean-code/) helps developers deliver high-quality, efficient code standards that benefit the entire team or organization. 
+PLEASE READ OUR SONARQUBE DOCUMENTATION FOR WORKING WITH AZURE DEVOPS PIPELINES  
+Azure DevOps - SonarQube Server Integration > https://docs.sonarsource.com/sonarqube-server/latest/devops-platform-integration/azure-devops-integration/  
+Azure DevOps Pipelines - SonarQube Cloud > https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/ci-based-analysis/azure-pipelines/  
 
-## Examples
-### Various Languages
-* [SonarScanner for various languages](sonar-scanner)
+## Important Information in Pipelines
+- triggers are set to only execute on changes to main branch and a specific directory in the project, this can be modified with whatever you would want to specify.
+- they have shallow fetch set to 0. this is required for SonarScanner to properly analyze your project.  
+- please remember to check the version available for the **cliScannerVersion** (https://github.com/SonarSource/sonar-scanner-cli/tags) parameter in the **SonarQubePrepare/SonarCloudPrepare** step.
+- for more information on how to limit your analysis scope and parameters available, please check **SonarScanner Analysis Scope** and **SonarScanner Analysis Parameters** in the Important Links section.
+- Please remember that there are different tasks for SonarQube Server and SonarQube Cloud. Examples for both are provided.
+    - SonarQube Cloud Example: SonarQube-Cloud.yml  
+    - SonarQube Server Example: SonarQube-Server.yml 
 
-### Ant
-[SonarScanner for Ant](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner-for-ant) is now deprecated. Please migrate to the SonarScanner CLI.
-* [SonarScanner for Ant - Basic](sonar-scanner-ant/ant-basic)
-* [SonarScanner for Ant - Code Coverage](sonar-scanner-ant/ant-coverage)
+## Important Links
+SonarQube Server - SonarQubePrepare > https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/sonar-qube-prepare-v7?view=azure-pipelines  
+Azure DevOps - SonarQube Server Integration > https://docs.sonarsource.com/sonarqube-server/latest/devops-platform-integration/azure-devops-integration/  
+Azure DevOps Pipelines - SonarQube Cloud > https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/ci-based-analysis/azure-pipelines/  
+SonarScanner Analysis Scope > https://docs.sonarsource.com/sonarqube-server/latest/project-administration/analysis-scope/  
+SonarScanner Analysis Parameters > https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/analysis-parameters/  
 
-### Gradle
-If you have a Gradle project, we recommend usage of [SonarScanner for Gradle](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner-for-gradle) or the equivalent SonarScanner for Gradle on your CI pipeline.
-* [SonarScanner for Gradle - Basic](sonar-scanner-gradle/gradle-basic)
-* [SonarScanner for Gradle - Kotlin DSL](sonar-scanner-gradle/gradle-kotlin-dsl)
-* [SonarScanner for Gradle - Multi-Module](sonar-scanner-gradle/gradle-multimodule)
-* [SonarScanner for Gradle - Multi-Module Code Coverage](sonar-scanner-gradle/gradle-multimodule-coverage)
+## Example to fail the entire pipeline if Quality Gate fails
+There may be situations or branches in which you will like to fail the pipeline if the SonarQube Quality Gate fails in order to stop any other steps in the pipeline.  
+This can be done by adding ```python
+sonar.qualitygate.wait=true``` 
+to the **extraProperties** section in the **SonarQubePrepare/SonarCloudPrepare** task.  
 
-### Maven
-If you have a Maven project, we recommend the usage of [SonarScanner for Maven](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner-for-maven) or the equivalent SonarScanner for Maven on your CI pipeline.
-* [SonarScanner for Maven - Basic](sonar-scanner-maven/maven-basic)
-* [SonarScanner for Maven - Multilingual (Java + Kotlin with coverage)](sonar-scanner-maven/maven-multilingual)
-* [SonarScanner for Maven - Multi-Module](sonar-scanner-maven/maven-multimodule)
-
-### DotNet/C#
-If you have a .NET project, we recommend the usage of [SonarScanner for .NET](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner-for-dotnet) or the equivalent SonarScanner for .NET on your CI pipeline.
-* [SonarScanner for .NET/MSBuild - C#](sonar-scanner-msbuild/CSharpProject)
-
-### Swift
-[SonarScanner - Swift Code Coverage](swift-coverage)
-
-### C/C++/Objective-C
-**_NOTE:_** All SonarScanner examples for C, C++ and Objective-C can be found [here](https://github.com/sonarsource-cfamily-examples).
-
-## License
-Copyright 2016-2023 SonarSource.
-
-Licensed under the [GNU Lesser General Public License, Version 3.0](http://www.gnu.org/licenses/lgpl.txt)
+Example
+``` sh
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      sonar.verbose=true
+      sonar.sources=src/
+      sonar.qualitygate.wait=true
+```
