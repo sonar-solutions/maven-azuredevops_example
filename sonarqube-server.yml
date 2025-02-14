@@ -12,6 +12,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+ - checkout: self
+   fetchDepth: 0
+
 - task: SonarQubePrepare@7
   inputs:
     SonarQube: 'SonarQube Server-maven-example'
