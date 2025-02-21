@@ -12,8 +12,8 @@ PLEASE READ OUR SONARQUBE DOCUMENTATION FOR WORKING WITH AZURE DEVOPS PIPELINES
 - They have shallow fetch set to 0. this is required for SonarScanner to properly analyze your project.  
 - For more information on how to limit your analysis scope and parameters available, please check **SonarScanner Analysis Scope** and **SonarScanner Analysis Parameters** in the Important Links section.
 - Please remember that there are different tasks for SonarQube Server and SonarQube Cloud. Examples for both are provided.
-    - SonarQube Cloud Example: SonarQube-Cloud.yml  
-    - SonarQube Server Example: SonarQube-Server.yml 
+    - SonarQube Cloud Example: [sonarqube-cloud.yml](sonarqube-cloud.yml)  
+    - SonarQube Server Example: [sonarqube-server.yml](sonarqube-server.yml) 
 
 ## Important Links
 [SonarQube Server - SonarQubePrepare](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/sonar-qube-prepare-v7?view=azure-pipelines)   
