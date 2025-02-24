@@ -13,7 +13,8 @@ PLEASE READ OUR SONARQUBE DOCUMENTATION FOR WORKING WITH AZURE DEVOPS PIPELINES
 - For more information on how to limit your analysis scope and parameters available, please check **SonarScanner Analysis Scope** and **SonarScanner Analysis Parameters** in the Important Links section.
 - Please remember that there are different tasks for SonarQube Server and SonarQube Cloud. Examples for both are provided.
     - SonarQube Cloud Example: [sonarqube-cloud.yml](sonarqube-cloud.yml)  
-    - SonarQube Server Example: [sonarqube-server.yml](sonarqube-server.yml) 
+    - SonarQube Server Example: [sonarqube-server.yml](sonarqube-server.yml)
+- If your Java project is using a different version than the one executing the analysis. Please check [Project's specific JDK](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/languages/java/#project-specific-jdk).   
 
 ## Important Links
 [SonarQube Server - SonarQubePrepare](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/sonar-qube-prepare-v7?view=azure-pipelines)   
