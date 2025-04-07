@@ -14,6 +14,14 @@ PLEASE READ OUR SONARQUBE DOCUMENTATION FOR WORKING WITH AZURE DEVOPS PIPELINES
 - Please remember that there are different tasks for SonarQube Server and SonarQube Cloud. Examples for both are provided.
     - SonarQube Cloud Example: SonarQube-Cloud.yml  
     - SonarQube Server Example: SonarQube-Server.yml 
+- In the example we have the Sonar Maven plugin version specified in the `pom.xml` file under the following plugin setting.  
+``` sh
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>version-to-change</version>
+        </plugin>
+```
 
 ## Important Links
 [SonarQube Server - SonarQubePrepare](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/sonar-qube-prepare-v7?view=azure-pipelines)   
