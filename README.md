@@ -14,6 +14,7 @@ PLEASE READ OUR SONARQUBE DOCUMENTATION FOR WORKING WITH AZURE DEVOPS PIPELINES
 - Please remember that there are different tasks for SonarQube Server and SonarQube Cloud. Examples for both are provided.
     - SonarQube Cloud Example: SonarQube-Cloud.yml  
     - SonarQube Server Example: SonarQube-Server.yml 
+- If your Java project is using a different version than the one executing the analysis. Please check [Project's specific JDK](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/languages/java/#project-specific-jdk).   
 - In the example we have the Sonar Maven plugin version specified in the `pom.xml` file under the following plugin setting.  
 ``` sh
         <plugin>
