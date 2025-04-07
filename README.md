@@ -15,6 +15,14 @@ PLEASE READ OUR SONARQUBE DOCUMENTATION FOR WORKING WITH AZURE DEVOPS PIPELINES
     - SonarQube Cloud Example: [sonarqube-cloud.yml](sonarqube-cloud.yml)  
     - SonarQube Server Example: [sonarqube-server.yml](sonarqube-server.yml)
 - If your Java project is using a different version than the one executing the analysis. Please check [Project's specific JDK](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/languages/java/#project-specific-jdk).   
+- In the example we have the Sonar Maven plugin version specified in the `pom.xml` file under the following plugin setting.  
+``` sh
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>version-to-change</version>
+        </plugin>
+```
 
 ## Important Links
 [SonarQube Server - SonarQubePrepare](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/sonar-qube-prepare-v7?view=azure-pipelines)   
