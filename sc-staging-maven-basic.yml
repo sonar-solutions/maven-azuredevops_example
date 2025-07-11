@@ -23,7 +23,7 @@ steps:
       sonar.verbose=true
       sonar.projectKey=onboarding-examples_maven-example
       sonar.projectName=onboarding-examples_maven-example
-      sonar.organization=onboarding-examples
+      sonar.organization=sonarqube-organization
       
 - task: Maven@3
   inputs:
