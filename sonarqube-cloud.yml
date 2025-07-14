@@ -23,8 +23,8 @@ steps:
       # Put one key=value per line, example:
       # sonar.exclusions=**/*.bin
       sonar.verbose=true
-      sonar.projectKey=onboarding-examples_maven-example
-      sonar.projectName=onboarding-examples_maven-example
+      sonar.projectKey=onboarding-examples_maven-exampleAnother
+      sonar.projectName=onboarding-examples_maven-exampleAnother
 
 - task: Maven@3
   inputs:
