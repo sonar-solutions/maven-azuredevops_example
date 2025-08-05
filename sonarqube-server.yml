@@ -25,7 +25,7 @@ steps:
       # sonar.exclusions=**/*.bin
       sonar.verbose=true
       sonar.projectKey=onboarding-examples_maven-example
-      sonar.projectName=onboarding-examples_maven-example
+      sonar.projectName=Onboarding Example - AzureDevOps - Maven Example
       
 - task: Maven@3
   inputs:

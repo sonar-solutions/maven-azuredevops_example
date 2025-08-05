@@ -23,8 +23,13 @@ steps:
       # Put one key=value per line, example:
       # sonar.exclusions=**/*.bin
       sonar.verbose=true
+<<<<<<< HEAD
       sonar.projectKey=onboarding-examples_maven-exampleAnother
       sonar.projectName=onboarding-examples_maven-exampleAnother
+=======
+      sonar.projectKey=onboarding-examples_maven-example
+      sonar.projectName=Onboarding Example - AzureDevOps - Maven Example
+>>>>>>> aed11fd (updating projectName)
 
 - task: Maven@3
   inputs:
